@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Willkommen bei Lovva</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: url('https://cdn.openai.com/chat-assets/sincere-emotions-delighted-young-female-demonstrating-her-smile-while-having-rest-home.jpg') no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      color: #fff;
+    }
+    .overlay {
+      background: linear-gradient(145deg, rgba(255,105,97,0.97), rgba(255,120,120,0.93));
+      padding: 2rem 2.5rem;
+      border-radius: 16px;
+      text-align: center;
+      max-width: 440px;
+      width: 90%;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+      animation: fadeIn 1.2s ease-in-out;
+    }
+    .logo {
+      width: 100px;
+      margin-bottom: 1rem;
+    }
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+    p {
+      font-size: 1.15rem;
+      margin-bottom: 1.5rem;
+      line-height: 1.4;
+    }
+    .counter {
+      background: #fff;
+      color: #ff3d5f;
+      padding: 0.75rem 1.25rem;
+      border-radius: 30px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin-bottom: 1.5rem;
+      display: inline-block;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      animation: pulse 1.5s infinite;
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+    ul.benefits {
+      list-style: none;
+      padding: 0;
+      margin: 1rem 0 2rem 0;
+      text-align: left;
+    }
+    ul.benefits li {
+      position: relative;
+      padding-left: 1.5rem;
+      margin-bottom: 0.6rem;
+    }
+    ul.benefits li::before {
+      content: "\2713";
+      position: absolute;
+      left: 0;
+      color: #fff;
+      font-weight: bold;
+    }
+    a {
+      display: inline-block;
+      text-decoration: none;
+      width: 100%;
+    }
+    button {
+      width: 100%;
+      padding: 1rem;
+      border: none;
+      border-radius: 30px;
+      background-color: #fff;
+      color: #ff3d5f;
+      font-weight: bold;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    button:hover {
+      background-color: #ffeef0;
+      transform: scale(1.05);
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay">
+    <img src="https://joinlovva.com/static/media/loova.847ed7dbcae69424ce66.jpeg" alt="Lovva Logo" class="logo">
+    <h1>🔥 Lerne echte Singles aus deiner Stadt kennen</h1>
+    <p>Lovva bringt dich direkt ins Gespräch. 100% kostenlos & anonym!</p>
+    <div class="counter">🔴 Aktuell online: <span id="userCount">0</span> Nutzer</div>
+    <ul class="benefits">
+      <li>Attraktive Profile mit echten Chatpartnern</li>
+      <li>Sofortiger Start – ohne App</li>
+      <li>Private Chats & echte Flirts</li>
+    </ul>
+    <a href="https://joinlovva.com"><button>Jetzt kostenlos starten</button></a>
+  </div>
+
+  <script>
+    function updateUserCount() {
+      const base = 24800;
+      const variation = Math.floor(Math.random() * 300) + 1;
+      document.getElementById("userCount").textContent = base + variation;
+    }
+    updateUserCount();
+    setInterval(updateUserCount, 7000);
+  </script>
+</body>
+</html>
