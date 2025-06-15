@@ -190,15 +190,19 @@
   text-align: center;
 }
 
+.hide {
+  display: none  !important;
+}
+
   </style>
 </head>
 <body>
 
-  <div class="container large-width">
+  <div class="container large-width main hide">
     <div>
       <div class="overlay">
         <img src="https://joinlovva.com/static/media/loova.847ed7dbcae69424ce66.jpeg" alt="Lovva Logo" class="logo">
-        <h1>🔥 Lerne echte Singles aus deiner Stadt kennen</h1>
+        <h1>🔥 Lerne echte Singles aus <span class="user-location">deiner Stadt</span> kennen</h1>
         <p>Lovva bringt dich direkt ins Gespräch – schnell, kostenlos & anonym!</p>
         <div class="counter">🔴 Über <span id="userCount">0</span> Nutzer gerade online</div>
         <ul class="benefits">
@@ -218,13 +222,13 @@
   </div>
 
 
-  <div class="flex-container small-width">
+  <div class="flex-container small-width main hide">
     <div class="flex-item-left">
       <div>
   
         <div class="overlay">
           <img src="https://joinlovva.com/static/media/loova.847ed7dbcae69424ce66.jpeg" alt="Lovva Logo" class="logo">
-          <h1>🔥 Lerne echte Singles aus deiner Stadt kennen</h1>
+          <h1>🔥 Lerne echte Singles aus <span class="user-location">deiner Stadt</span> kennen</h1>
           <p>Lovva bringt dich direkt ins Gespräch – schnell, kostenlos & anonym!</p>
           <div class="counter">🔴 Über <span id="userCount">0</span> Nutzer gerade online</div>
           <ul class="benefits">
@@ -257,6 +261,123 @@
     }
     updateUserCount();
     setInterval(updateUserCount, 7000);
+  </script>
+  <script>
+    // let show = false
+class Location {
+
+async geoLocate() {
+  await this.setCoordinates()
+  await this.reverseGeocode()
+}
+
+
+async setCoordinates() {
+   return new Promise(async (resolve,reject)=>{
+     if (navigator.geolocation) {
+       navigator.geolocation.getCurrentPosition((data)=>{
+         console.log('GEO DATA FROM HTML API')
+         let location = {
+           lat: data.coords.latitude,
+           lng: data.coords.longitude
+         }
+         this.source = 'HTML geolocation API'
+         this.lat = data.coords.latitude
+         this.lng = data.coords.longitude
+         resolve(location)
+       }, async ()=>{
+         let location = await this.googleGeolocation()
+         resolve(location)
+         console.log('GEO DATA FROM GOOGLE API')
+       });
+     }else{
+       let location = await this.googleGeolocation()
+       resolve(location)
+       console.log('GEO DATA FROM GOOGLE API')
+     }
+   })
+ }
+
+
+
+ async googleGeolocation(){
+   let response = await fetch('https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyCkktP7eEWHs8FJJ6hFe10co5etxojmnKA',{ 
+     method: 'POST',
+     headers: {
+     'Content-Type': 'application/json'
+     },
+     body:JSON.stringify({
+       considerIp:true
+     })
+   })
+   let data = await response.json()
+   let location = data.location
+   this.lat = location.lat
+   this.lng = location.lng
+   this.accuracy= data.accuracy
+   this.source = 'Google Geolocation API'
+   console.log(location)
+   return location
+ }
+
+ async reverseGeocode() {
+   let response = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${this.lat},${this.lng}&key=AIzaSyCkktP7eEWHs8FJJ6hFe10co5etxojmnKA`,{ 
+      method: 'POST',
+    })
+   let data = await response.json()
+   let parsedAddress = this.parseAddress(data)
+   this.location = parsedAddress
+   return true
+}
+
+parseAddress(response) {
+ let results = response.results
+ let parseAddress = results.reduce((accumulator,obj)=> {
+   let componentCountainsCountry = obj.types.includes('country');
+   let componentCountainsPostalCode = obj.types.includes('postal_code');
+
+   if(componentCountainsCountry) {
+     let address_components = obj.address_components
+     let countryComponenet =  address_components.find(c => c.types.includes('country'))
+     accumulator.country = countryComponenet
+   }
+
+   if(componentCountainsPostalCode) {
+     let address_components = obj.address_components
+     let postalComponenet =  address_components.find(c => (c.types.includes('postal_code') && c.types.length == 1 ))
+     if(postalComponenet) {
+       accumulator.postal_code = postalComponenet.short_name
+       accumulator.street_address = obj.formatted_address
+     }
+   }
+     return accumulator
+ },{
+   country:null,
+   postal_code:null,
+   street_address:null
+ })
+ return parseAddress
+}
+}
+
+
+let  getLocation = async () => {
+  try {
+    let loca = new Location()
+    await loca.geoLocate()
+    console.log(loca.location,"asdasdasdasd")
+    document.getElementsByClassName('user-location')[0].innerText = loca.location.country.long_name
+    document.getElementsByClassName('user-location')[1].innerText = loca.location.country.long_name
+    document.getElementsByClassName('main')[0].classList.remove('hide')
+    document.getElementsByClassName('main')[1].classList.remove('hide')
+
+
+  }catch(e){
+    document.getElementsByClassName('main')[0].classList.remove('hide')
+    document.getElementsByClassName('main')[1].classList.remove('hide')
+  }
+}
+getLocation()
   </script>
 </body>
 </html>
