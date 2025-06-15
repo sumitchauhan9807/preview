@@ -204,7 +204,7 @@
         <img src="https://joinlovva.com/static/media/loova.847ed7dbcae69424ce66.jpeg" alt="Lovva Logo" class="logo">
         <h1>🔥 Lerne echte Singles aus <span class="user-location">deiner Stadt</span> kennen</h1>
         <p>Lovva bringt dich direkt ins Gespräch – schnell, kostenlos & anonym!</p>
-        <div class="counter">🔴 Über <span id="userCount">0</span> Nutzer gerade online</div>
+        <div class="counter">🔴 Über <span class="userCount"><span class="online-users">0</span></span> Nutzer gerade online</div>
         <ul class="benefits">
           <li>Verifizierte Profile mit echten Chatpartnern</li>
           <li>Kein Download notwendig – sofort starten</li>
@@ -230,7 +230,7 @@
           <img src="https://joinlovva.com/static/media/loova.847ed7dbcae69424ce66.jpeg" alt="Lovva Logo" class="logo">
           <h1>🔥 Lerne echte Singles aus <span class="user-location">deiner Stadt</span> kennen</h1>
           <p>Lovva bringt dich direkt ins Gespräch – schnell, kostenlos & anonym!</p>
-          <div class="counter">🔴 Über <span id="userCount">0</span> Nutzer gerade online</div>
+          <div class="counter">🔴 Über <span class="userCount"><span class="online-users">0</span></span> Nutzer gerade online</div>
           <ul class="benefits">
             <li>Verifizierte Profile mit echten Chatpartnern</li>
             <li>Kein Download notwendig – sofort starten</li>
@@ -255,9 +255,11 @@
   
   <script>
     function updateUserCount() {
-      const base = 24800;
+      const base = 5000;
       const variation = Math.floor(Math.random() * 300) + 1;
-      document.getElementById("userCount").textContent = base + variation;
+      document.getElementsByClassName("userCount")[0].textContent = base + variation;
+      document.getElementsByClassName("userCount")[1].textContent = base + variation;
+
     }
     updateUserCount();
     setInterval(updateUserCount, 7000);
@@ -368,6 +370,12 @@ parseAddress(response) {
 }
 }
 
+function getRandomInteger(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
 
 let  getLocation = async () => {
   try {
@@ -384,6 +392,13 @@ let  getLocation = async () => {
     document.getElementsByClassName('main')[0].classList.remove('hide')
     document.getElementsByClassName('main')[1].classList.remove('hide')
   }
+}
+
+let setOnlineUsers = () => {
+  let uses = getRandomInteger(10,500)
+  document.getElementsByClassName('online-users')[0].innerText = users
+  document.getElementsByClassName('online-users')[1].innerText = users
+
 }
 getLocation()
   </script>
