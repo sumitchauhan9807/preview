@@ -5,13 +5,54 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Willkommen bei Lovva</title>
   <style>
+    
+
+.flex-container {
+  display: flex;
+  flex-direction: row;
+  font-size: 30px;
+  text-align: center;
+}
+
+.flex-item-left {
+ 
+  /* padding: 10px; */
+  flex: 50%;
+}
+
+.flex-item-right {
+ 
+  /* padding: 10px; */
+  flex: 50%;
+}
+
+.small-width {
+    display: none  ;
+  }
+
+/* Responsive layout - makes a one column-layout instead of two-column layout */
+@media (max-width: 800px) {
+  .flex-container {
+    flex-direction: column;
+  }
+  .large-width {
+    display: none  !important;
+  }
+  body {
+    display: block !important;
+  }
+  .small-width {
+    display: block  !important;
+  }
+}
+
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
       background: url('https://cdn.openai.com/chat-assets/sincere-emotions-delighted-young-female-demonstrating-her-smile-while-having-rest-home.jpg') no-repeat center center fixed;
       background-size: cover;
-      display: flex;
       align-items: center;
+      display: flex;
       justify-content: center;
       height: 100vh;
       color: #fff;
@@ -148,13 +189,13 @@
   font-size: 30px;
   text-align: center;
 }
+
   </style>
 </head>
 <body>
 
-  <div class="container">
+  <div class="container large-width">
     <div>
-
       <div class="overlay">
         <img src="https://joinlovva.com/static/media/loova.847ed7dbcae69424ce66.jpeg" alt="Lovva Logo" class="logo">
         <h1>🔥 Lerne echte Singles aus deiner Stadt kennen</h1>
@@ -172,10 +213,38 @@
     <div>
       <div class="sdf-img" style="padding-top: 10px ;">
       <img style="width: 500px;"  src="modeleyes.jpeg">
+     </div>
+    </div>
+  </div>
 
+
+  <div class="flex-container small-width">
+    <div class="flex-item-left">
+      <div>
+  
+        <div class="overlay">
+          <img src="https://joinlovva.com/static/media/loova.847ed7dbcae69424ce66.jpeg" alt="Lovva Logo" class="logo">
+          <h1>🔥 Lerne echte Singles aus deiner Stadt kennen</h1>
+          <p>Lovva bringt dich direkt ins Gespräch – schnell, kostenlos & anonym!</p>
+          <div class="counter">🔴 Über <span id="userCount">0</span> Nutzer gerade online</div>
+          <ul class="benefits">
+            <li>Verifizierte Profile mit echten Chatpartnern</li>
+            <li>Kein Download notwendig – sofort starten</li>
+            <li>Diskret & unverbindlich neue Leute kennenlernen</li>
+          </ul>
+          <div class="testimonial">„Ich habe bei Lovva jemanden kennengelernt, mit dem ich heute noch schreibe! 😍 – <strong>Laura, 27</strong>“</div>
+          <a href="https://joinlovva.com"><button>💬 Jetzt kostenlos starten</button></a>
+        </div>
       </div>
     </div>
+    <div class="flex-item-right">
+      <div>
+        <div class="sdf-img" style="padding-top: 10px ;">
+        <img style="width: 500px;"  src="modeleyes.jpeg">
   
+        </div>
+      </div>
+    </div>
   </div>
  
 
