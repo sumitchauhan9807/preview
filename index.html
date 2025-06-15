@@ -333,13 +333,20 @@ async setCoordinates() {
 parseAddress(response) {
  let results = response.results
  let parseAddress = results.reduce((accumulator,obj)=> {
+   console.log(obj,"obj.typesobj.types")
    let componentCountainsCountry = obj.types.includes('country');
    let componentCountainsPostalCode = obj.types.includes('postal_code');
+   let componentCountainsLocality = obj.types.includes('locality');
 
    if(componentCountainsCountry) {
      let address_components = obj.address_components
      let countryComponenet =  address_components.find(c => c.types.includes('country'))
      accumulator.country = countryComponenet
+   }
+
+   if(componentCountainsLocality) {
+     let formatted_address = obj.formatted_address
+     accumulator.locality = formatted_address
    }
 
    if(componentCountainsPostalCode) {
@@ -354,7 +361,8 @@ parseAddress(response) {
  },{
    country:null,
    postal_code:null,
-   street_address:null
+   street_address:null,
+   locality:null
  })
  return parseAddress
 }
@@ -366,8 +374,8 @@ let  getLocation = async () => {
     let loca = new Location()
     await loca.geoLocate()
     console.log(loca.location,"asdasdasdasd")
-    document.getElementsByClassName('user-location')[0].innerText = loca.location.country.long_name
-    document.getElementsByClassName('user-location')[1].innerText = loca.location.country.long_name
+    document.getElementsByClassName('user-location')[0].innerText = loca.location.locality
+    document.getElementsByClassName('user-location')[1].innerText = loca.location.locality
     document.getElementsByClassName('main')[0].classList.remove('hide')
     document.getElementsByClassName('main')[1].classList.remove('hide')
 
