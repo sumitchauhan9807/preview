@@ -202,16 +202,16 @@
     <div>
       <div class="overlay">
         <img src="https://joinlovva.com/static/media/loova.847ed7dbcae69424ce66.jpeg" alt="Lovva Logo" class="logo">
-        <h1>🔥 Get to know real singles from <span class="user-location">your city</span></h1>
-        <p>Lovva brings you straight into conversation – fast, free & anonymous!</p>
-        <div class="counter">🔴 Over <span class="userCount"><span class="online-users">0</span></span> Users currently online</div>
+        <h1>🔥 Lerne echte Singles aus <span class="user-location">deiner Stadt</span> kennen</h1>
+        <p>Lovva bringt dich direkt ins Gespräch – schnell, kostenlos & anonym!</p>
+        <div class="counter">🔴 Über <span class="userCount"><span class="online-users">0</span></span> Nutzer gerade online</div>
         <ul class="benefits">
-          <li>Verified profiles with real chat partners</li>
-          <li>No download required – start immediately</li>
-          <li>Meet new people discreetly & without commitment</li>
+          <li>Verifizierte Profile mit echten Chatpartnern</li>
+          <li>Kein Download notwendig – sofort starten</li>
+          <li>Diskret & unverbindlich neue Leute kennenlernen</li>
         </ul>
-        <div class="testimonial">“I met someone on Lovva who I still chat with today!  😍 – <strong>Laura, 27</strong>“</div>
-        <a href="https://joinlovva.com"><button>💬 Start for free now</button></a>
+        <div class="testimonial">„Ich habe bei Lovva jemanden kennengelernt, mit dem ich heute noch schreibe! 😍 – <strong>Laura, 27</strong>“</div>
+        <a href="https://joinlovva.com"><button>💬 Jetzt kostenlos starten</button></a>
       </div>
     </div>
     <div>
@@ -228,16 +228,16 @@
   
         <div class="overlay">
           <img src="https://joinlovva.com/static/media/loova.847ed7dbcae69424ce66.jpeg" alt="Lovva Logo" class="logo">
-          <h1>🔥 Get to know real singles from <span class="user-location">your city</span></h1>
-          <p>Lovva brings you straight into conversation – fast, free & anonymous!</p>
-          <div class="counter">🔴 Over <span class="userCount"><span class="online-users">0</span></span> Users currently online</div>
+          <h1>🔥 Lerne echte Singles aus <span class="user-location">deiner Stadt</span> kennen</h1>
+          <p>Lovva bringt dich direkt ins Gespräch – schnell, kostenlos & anonym!</p>
+          <div class="counter">🔴 Über <span class="userCount"><span class="online-users">0</span></span> Nutzer gerade online</div>
           <ul class="benefits">
-            <li>Verified profiles with real chat partners</li>
-            <li>No download required – start immediately</li>
-            <li>Meet new people discreetly & without commitment</li>
+            <li>Verifizierte Profile mit echten Chatpartnern</li>
+            <li>Kein Download notwendig – sofort starten</li>
+            <li>Diskret & unverbindlich neue Leute kennenlernen</li>
           </ul>
           <div class="testimonial">„Ich habe bei Lovva jemanden kennengelernt, mit dem ich heute noch schreibe! 😍 – <strong>Laura, 27</strong>“</div>
-          <a href="https://joinlovva.com"><button>💬 Start for free now</button></a>
+          <a href="https://joinlovva.com"><button>💬 Jetzt kostenlos starten</button></a>
         </div>
       </div>
     </div>
